@@ -33,9 +33,9 @@ exports.postRestore = function(postRequest) {
         var highestDate = 0;
         for (var i = 0; i < files.length; i++) {
 
-          if (file.indexOf('totodump-') < 0) continue;
+          if (files[i].indexOf('totodump-') < 0) continue;
 
-          var date = file.substring(9, 23);
+          var date = files[i].substring(9, 23);
           var dateInt = parseInt(date);
 
           if (dateInt > highestDate) highestDate = dateInt;
