@@ -48,6 +48,10 @@ exports.postRestore = function(postRequest) {
 
         exec('tar -xf ' + dumpToRestore, function(err, stdout, stderr) {
 
+          console.log(stdout);
+          console.log(stderr);
+          console.log(err);
+
           exec('mongorestore --host mongo:27017 mongo-dump/', function(err, stdout, stderr) {
 
             console.log(stdout);
