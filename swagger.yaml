@@ -1,0 +1,34 @@
+swagger: '2.0'
+info:
+  description: This API retrieves the usage statistic of every MS API of Toto
+  title: API Usage
+schemes:
+  - https
+paths:
+  /dumps:
+    post:
+      summary: Requests a Mongo dump
+      description: 'Requests a dump of Mongo DB database'
+      operationId: POST dump
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#definitions/PostDumpRequest'
+      responses:
+        '201':
+          description: Successful operation
+        '400':
+          description: Invalid status value
+
+definitions:
+  PostDumpRequest:
+    type: object
+    properties:
+      env:
+        type: string
+        description: 'The environment in which to request the dump (env, prod)'
