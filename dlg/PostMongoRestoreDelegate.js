@@ -52,7 +52,7 @@ exports.postRestore = function(postRequest) {
           console.log(stderr);
           console.log(err);
 
-          exec('mongorestore --host mongo:27017 ' + gitFolder + '/mongo-dump/', function(err, stdout, stderr) {
+          exec('mongorestore --host mongo:27017 /mongo-dump/', function(err, stdout, stderr) {
 
             console.log(stdout);
             console.log(stderr);
