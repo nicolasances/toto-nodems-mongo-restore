@@ -21,7 +21,7 @@ exports.postRestore = function(postRequest) {
     var env = postRequest.env;
     var gitFolder = '/' + env + '-mongo-dump';
 
-    exec('rm -r ' + gitFolder + '; git clone https://' + a + ':' + b + '@gitlab.com/totoances/' + postRequest.env + '-mongo-dump.git; cd ' + gitFolder, function(err, stdout, stderr) {
+    exec('rm -r ' + gitFolder + '; git clone https://' + a + ':' + b + '@gitlab.com/totoances/' + postRequest.env + '-mongo-dump.git;', function(err, stdout, stderr) {
 
       fs.readdir(gitFolder, function(err, files) {
 
@@ -42,7 +42,7 @@ exports.postRestore = function(postRequest) {
 
         }
 
-        var dumpToRestore = 'totodump-' + highestDate + '.tgz';
+        var dumpToRestore = gitFolder + '/totodump-' + highestDate + '.tgz';
 
         console.log('About to restore dump: ' + dumpToRestore);
 
@@ -52,7 +52,7 @@ exports.postRestore = function(postRequest) {
           console.log(stderr);
           console.log(err);
 
-          exec('mongorestore --host mongo:27017 mongo-dump/', function(err, stdout, stderr) {
+          exec('mongorestore --host mongo:27017 ' + gitFolder + '/mongo-dump/', function(err, stdout, stderr) {
 
             console.log(stdout);
             console.log(stderr);
