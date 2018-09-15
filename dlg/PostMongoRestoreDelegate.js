@@ -18,10 +18,10 @@ exports.postRestore = function(postRequest) {
 
     var dumpTS = moment().tz('Europe/Rome').format('YYYYMMDDHHmmss');
     var dumpname = 'totodump-' + dumpTS + '.tgz';
-    var env = postRequest.env;
+    var env = 'prod';
     var gitFolder = '/' + env + '-mongo-dump';
 
-    exec('rm -r ' + gitFolder + '; git clone https://' + a + ':' + b + '@gitlab.com/totoances/' + postRequest.env + '-mongo-dump.git;', function(err, stdout, stderr) {
+    exec('rm -r ' + gitFolder + '; git clone https://' + a + ':' + b + '@gitlab.com/totoances/prod-mongo-dump.git;', function(err, stdout, stderr) {
 
       fs.readdir(gitFolder, function(err, files) {
 
