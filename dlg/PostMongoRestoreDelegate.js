@@ -9,13 +9,6 @@ exports.postRestore = function(postRequest) {
 
   return new Promise(function(success, failure) {
 
-    console.log(postRequest);
-
-    if (postRequest == null || postRequest.env == null || postRequest.env == '') {
-      failure();
-      return;
-    }
-
     var dumpTS = moment().tz('Europe/Rome').format('YYYYMMDDHHmmss');
     var dumpname = 'totodump-' + dumpTS + '.tgz';
     var env = 'prod';
