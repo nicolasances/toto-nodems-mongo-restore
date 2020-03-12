@@ -5,7 +5,9 @@ var fs = require('fs');
 var a = 'totoances';
 var b = 'totonazzi';
 
-exports.postRestore = function(postRequest) {
+exports.postRestore = function(req) {
+
+  postRequest = req.body;
 
   return new Promise(function(success, failure) {
 
